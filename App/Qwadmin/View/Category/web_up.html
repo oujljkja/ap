@@ -1,0 +1,179 @@
+<include file="Public/head"/>
+<body class="no-skin">
+<include file="Public/header"/>
+
+<link rel="stylesheet" href="/Public/c/lib/codemirror.css">
+<script src="/Public/c/lib/codemirror.js"></script>
+<script src="/Public/c/mode/groovy/groovy.js"></script>
+<div class="main-container" id="main-container">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('main-container', 'fixed')
+        } catch (e) {
+        }
+    </script>
+
+    <include file="Public/sidebar"/>
+    <div class="main-content">
+        <div class="main-content-inner">
+            <!-- #section:basics/content.breadcrumbs -->
+            <include file="Public/breadcrumbs"/>
+
+            <!-- /section:basics/content.breadcrumbs -->
+            <div class="page-content">
+                <include file="Public/set"/>
+
+                <!-- /section:settings.box -->
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- PAGE CONTENT BEGINS -->
+                        <form class="form-horizontal" action="{:U('web_up')}" method="post">
+                            <input type="hidden" name="id"   value="{$id}"  >
+                            <div class="space-4"></div>
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 网站名称 </label>
+                                <div class="col-sm-9">
+                                    <!--<input type="text" name="o" id="o" placeholder="" class="col-xs-10 col-sm-5" value="{$row['name']}" readonly  unselectable="on" >-->
+                                    <input type="text" name="name" id="name" placeholder="" class="col-xs-10 col-sm-5" value="{$row['name']}"  >
+                                </div>
+                            </div>
+
+                            <div class="space-4"></div>
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label no-padding-right" for="form-field-2">
+                                    网站ip</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="ip" id="ip" placeholder="" class="col-xs-10 col-sm-5" value="{$row['ip']}"  >
+                                </div>
+                            </div>
+
+                            <div class="space-4"></div>
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label no-padding-right" for="form-field-2">
+                                    网站文件</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="file_name" id="file_name" placeholder="" class="col-xs-10 col-sm-5" value="{$row['file_name']}"  >
+                                </div>
+                            </div>
+                            <if condition="$uid eq 1">
+                            <div class="space-4"></div>
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label no-padding-right" for="form-field-2">
+                                    账号</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="zhanghao" id="file_name" placeholder="" class="col-xs-10 col-sm-5" value="{$row['zhanghao']}"  >
+                                </div>
+                            </div>
+                            <div class="space-4"></div>
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label no-padding-right" for="form-field-2">
+                                    密码</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="pass" id="file_name" placeholder="" class="col-xs-10 col-sm-5" value="{$row['pass']}"  >
+                                </div>
+                            </div>
+                           </if>
+                          <!--  <div class="space-4"></div>
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label no-padding-right" for="form-field-2">
+                                    js模板</label>
+                                <div class="col-sm-9">
+                                    <textarea id="code" name="code">{$row['code']}</textarea>
+                                     <textarea name="content" cols="55" rows="10">{$row['content']}</textarea>
+                                </div>
+                                <script>
+                                    var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+                                        lineWrapping: 'boolean',
+                                        lineNumbers: true,
+                                        matchBrackets: true,
+
+                                        mode: "text/x-groovy"
+                                    });
+                                    editor.setSize('1200px', '800px');     //设置代码框的长宽
+                                </script>
+                            </div>-->
+
+
+<!--
+                            <div class="space-4"></div>
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 开启状态 </label>
+                                <div class="control-label no-padding-left col-sm-1">
+                                    <label>
+                                        <input name="status" id="islink"
+                                        checked="checked"
+                                        value="1" class="ace ace-switch ace-switch-2" type="checkbox" />
+                                        <span class="lbl"></span>
+                                    </label>
+                                </div>
+                                <span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle"></span>
+										</span>
+                            </div>
+
+-->
+
+                            <div class="space-4"></div>
+                            <div class="col-md-offset-2 col-md-9">
+                                <button class="btn btn-info" type="submit">
+                                    <i class="icon-ok bigger-110"></i>
+                                    提交
+                                </button>
+
+                                &nbsp; &nbsp; &nbsp;
+                                <button class="btn sst" type="reset">
+                                    <i class="icon-undo bigger-110"></i>
+                                    返回
+                                </button>
+                            </div>
+                        </form>
+                        <!-- PAGE CONTENT ENDS -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.page-content -->
+        </div>
+    </div><!-- /.main-content -->
+    <include file="Public/footer"/>
+
+</div><!-- /.main-container -->
+
+<include file="Public/footerjs"/>
+<!-- inline scripts related to this page -->
+<script type="text/javascript">
+    $(function () {
+        var editor = KindEditor.create('textarea[name="tips"]', {
+            resizeType: 1,
+            allowPreviewEmoticons: false,
+            allowImageUpload: false,
+            items: [
+                'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+                'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                'insertunorderedlist', '|', 'emoticons', 'link']
+        });
+        $(".btn.btn-info").click(function () {
+            var title = $("#title").val();
+            if (title == '') {
+                bootbox.alert({
+                    buttons: {
+                        ok: {
+                            label: '确定',
+                            className: 'btn-myStyle'
+                        }
+                    },
+                    message: '菜单名称不能为空。',
+                    title: "友情提示",
+                });
+                return false;
+            }
+
+        })
+
+        $(".btn.sst").click(function () {
+            self.location="/index.php/Qwadmin/Category/web.html";
+
+        })
+    })
+</script>
+
+</body>
+</html>
