@@ -172,7 +172,16 @@ class CategoryController extends ComController
           $myfile = fopen("./js/{$advert['name']}/{$advert['file_name']}", "w") or die("Unable to open file!");
 
           fwrite($myfile, $js);
-            M("web")->data(array('key'=>1))->where(array("id"=>$id))->save();
+          $conn = ftp_connect("{$_POST['ip']}");
+
+          // 使用username和password登录
+          ftp_login($conn, "'{$_POST['zhanghao']}'", "'{$_POST['pass']}'");
+
+
+          ftp_put($conn, "/js/{$advert['file_name']}", "./js/{$advert['name']}/{$advert['file_name']}", FTP_ASCII);
+
+
+          //M("web")->data(array('key'=>1))->where(array("id"=>$id))->save();
             $row =  M("advert_content")->where(array('advert_id'=>$id))->find();
           if($row['id']){
               $data['key']=1;
@@ -349,11 +358,7 @@ class CategoryController extends ComController
                }
                $data['content'] = $_POST['code'];
                $data['union_id'] = $_POST['id'];
-               if($_POST['status']){
-                   $data['status'] = 1;
-               }else{
-                   $data['status'] = 2;
-               }
+
                $data['add_time'] = time();
                $data['up_time'] = time();
                $data['name'] = trim($_POST['name']);
@@ -371,7 +376,16 @@ class CategoryController extends ComController
                    $this->error('联盟id不存在！', U("Category/advert_in",array('id'=>$id)));
                }
 
-//上传文件
+               //ftp
+               $conn = ftp_connect("98.126.64.26");
+
+                // 使用username和password登录
+               ftp_login($conn, 'js', 'macbookair99');
+
+
+               ftp_put($conn, “xyz.txt”, “abc.txt”, FTP_ASCII);
+
+            //上传文件ssh2
                /*
                $connection =  ssh2_connect('47.91.221.244', 1717);
                $user = "root";
