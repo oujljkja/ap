@@ -50,16 +50,19 @@
                             <div class="space-4"></div>
                             <div class="form-group">
                                 <label class="col-sm-1 control-label no-padding-right" for="form-field-2">
-                                    网站文件</label>
+                                    生成的js文件名</label>
                                 <div class="col-sm-9">
                                     <input type="text" name="file_name" id="file_name" placeholder="" class="col-xs-10 col-sm-5" value="{$row['file_name']}"  >
+                                    <span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle">问件会保存在ftp当前目录。</span>
+											</span>
                                 </div>
                             </div>
                             <if condition="$uid eq 1">
                             <div class="space-4"></div>
                             <div class="form-group">
                                 <label class="col-sm-1 control-label no-padding-right" for="form-field-2">
-                                    账号</label>
+                                    ftp账号</label>
                                 <div class="col-sm-9">
                                     <input type="text" name="zhanghao" id="file_name" placeholder="" class="col-xs-10 col-sm-5" value="{$row['zhanghao']}"  >
                                 </div>
@@ -67,7 +70,7 @@
                             <div class="space-4"></div>
                             <div class="form-group">
                                 <label class="col-sm-1 control-label no-padding-right" for="form-field-2">
-                                    密码</label>
+                                    ftp密码</label>
                                 <div class="col-sm-9">
                                     <input type="text" name="pass" id="file_name" placeholder="" class="col-xs-10 col-sm-5" value="{$row['pass']}"  >
                                 </div>
