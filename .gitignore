@@ -1,6 +1,5 @@
 App/Runtime/
 *~
-Public/attached/
 /*.buildpath
 /*.project
 /.settings
