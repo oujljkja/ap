@@ -246,10 +246,11 @@ class CategoryController extends ComController
     //联盟列表
     public function union()
     {
-        if($_SESSION['user']['web_id']){
+        if($_SESSION['user']['web_id']&&$_SESSION['user']['uid']!=1){
             $vars = M('union')->where(" id in({$_SESSION['user']['web_id']}) ")->select();
         }else{
-            //$vars = M('union')->where(" id in({$_SESSION['user']['web_id']}) ")->select();
+
+            $vars = M('union')->select();
         }
 
         $this->assign('list', $vars);
