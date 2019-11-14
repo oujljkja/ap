@@ -27,9 +27,32 @@ class CategoryController extends ComController
     }
     //添加网站权限
     public  function web_jurisdiction(){
-        $web =  M("web")->select();
+        $web =  M("union")->select();
         $member = M('member')->select();
         $user  = M("member")->where(array('id'=>$_SESSION['uid']))->find();
+        if($user['web_id']){
+            $web_id =  explode(',',$user['web_id']);
+            foreach ($web as $key=>$value){
+               foreach ($web_id as $v){
+                   if($value['id']==$v){
+                       $web[$key]['st_id'] =1;
+                   }
+               }
+            }
+        }
+        if($_POST){
+            $_POST['rules'];
+            if($_POST['rules']){
+               $data['web_id'] =  implode(',',$_POST['rules']);
+            }
+            if(!$_POST['uid']){
+                $this->error('用户不存在！', U("Category/web_jurisdiction"));
+                exit;
+            }
+            M('member')->data($data)->where(array('uid'=>$_POST['uid']))->save();
+            $this->success('操作成功！');
+            exit;
+        }
         $this->assign('member',$member);
         $this->assign('web',$web);
         $this->assign('user',$user);
@@ -38,6 +61,7 @@ class CategoryController extends ComController
 
    //网站列表
     public  function  web(){
+
         $vars = M('web')->select();
         $this->assign('list', $vars);
         $this->display();
@@ -178,7 +202,7 @@ class CategoryController extends ComController
           ftp_login($conn, "'{$_POST['zhanghao']}'", "'{$_POST['pass']}'");
 
 
-          ftp_put($conn, "/js/{$advert['file_name']}", "./js/{$advert['name']}/{$advert['file_name']}", FTP_ASCII);
+          ftp_put($conn, "{$advert['file_name']}", "./js/{$advert['name']}/{$advert['file_name']}", FTP_ASCII);
 
 
           //M("web")->data(array('key'=>1))->where(array("id"=>$id))->save();
@@ -222,7 +246,7 @@ class CategoryController extends ComController
     //联盟列表
     public function union()
     {
-        $vars = M('union')->select();
+        $vars = M('union')->where(" id in({$_SESSION['user']['web_id']}) ")->select();
         $this->assign('list', $vars);
         $this->display();
     }

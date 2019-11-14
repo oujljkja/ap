@@ -42,7 +42,7 @@ class LoginController extends ComController
 
 
         $model = M("Member");
-        $user = $model->field('uid,user')->where(array('user' => $username, 'password' => $password))->find();
+        $user = $model->field('uid,user,web_id')->where(array('user' => $username, 'password' => $password))->find();
 
         if ($user) {
             $salt = C("COOKIE_SALT");
@@ -50,6 +50,7 @@ class LoginController extends ComController
             $ua = $_SERVER['HTTP_USER_AGENT'];
             session_start();
             session('uid',$user['uid']);
+            session('user',$user);
             //加密cookie信息
             $auth = password($user['uid'].$user['user'].$ip.$ua.$salt);
             if ($remember) {
