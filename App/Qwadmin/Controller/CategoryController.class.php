@@ -185,8 +185,8 @@ class CategoryController extends ComController
           $data['code'] = $js;
           $data['modify'] = $_SESSION['think']['admin_user_id'];
           $data['up_time'] = time();
-echo $advert['name'];exit;
-          $dir = iconv("UTF-8", "GBK", "./js/{$advert['name']}");
+
+          $dir = iconv("GBK", "UTF-8", "./js/{$advert['name']}");
           if (!file_exists($dir)){
               mkdir ($dir,0777,true);
           }
