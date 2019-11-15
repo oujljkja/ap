@@ -389,7 +389,7 @@ class CategoryController extends ComController
         if($_POST){
            if($_POST['id']){
                $id = $_POST['id'];
-               if(!$_POST['content']){
+               if(!$_POST['code']){
                    $this->error('请填写内容！', U("Category/advert_in",array('id'=>$id)));
                }
                $data['content'] = $_POST['code'];
