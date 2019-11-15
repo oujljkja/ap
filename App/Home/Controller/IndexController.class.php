@@ -16,8 +16,9 @@ class IndexController extends ComController
 {
     public function index()
     {
+        header('Location: /index.php/Qwadmin/');
 
-        $this->display();
+       // $this->display();
     }
     /*
     //一些前台DEMO
