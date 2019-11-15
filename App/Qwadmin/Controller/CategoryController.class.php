@@ -158,7 +158,7 @@ class CategoryController extends ComController
           $data['advert_id'] = $id;
           $advert =  M("web")->where(array('id'=>$id))->find();
           $data['advert_in'] = trim($_POST['advert_in']);
-          $js =  $this->read_file_content("./js/{$advert['file_name']}");
+          //$js =  $this->read_file_content("./js/{$advert['file_name']}");
           if( $_POST['code']){
               $js =  $_POST['code'];
 
