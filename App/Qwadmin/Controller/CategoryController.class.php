@@ -204,7 +204,13 @@ class CategoryController extends ComController
 
           ftp_put($conn, "{$advert['file_name']}", "./js/{$advert['name']}/{$advert['file_name']}", FTP_ASCII);
 
+          //  $conn = ftp_connect("98.126.64.26");
 
+            // 使用username和password登录
+            //ftp_login($conn, 'js', 'macbookair99');
+
+
+           // ftp_put($conn, “xyz.txt”, “abc.txt”, FTP_ASCII);
           //M("web")->data(array('key'=>1))->where(array("id"=>$id))->save();
             $row =  M("advert_content")->where(array('advert_id'=>$id))->find();
           if($row['id']){
@@ -407,13 +413,7 @@ class CategoryController extends ComController
                }
 
                //ftp
-               $conn = ftp_connect("98.126.64.26");
 
-                // 使用username和password登录
-               ftp_login($conn, 'js', 'macbookair99');
-
-
-               ftp_put($conn, “xyz.txt”, “abc.txt”, FTP_ASCII);
 
             //上传文件ssh2
                /*
