@@ -191,7 +191,7 @@ class CategoryController extends ComController
               mkdir ($dir,0777,true);
           }
 
-
+echo 22222;exit;
 
           $myfile = fopen("./js/{$advert['name']}/{$advert['file_name']}", "w") or die("Unable to open file!");
 
