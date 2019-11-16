@@ -212,10 +212,10 @@ print_r($data);
 
            // ftp_put($conn, “xyz.txt”, “abc.txt”, FTP_ASCII);
           //M("web")->data(array('key'=>1))->where(array("id"=>$id))->save();
-            $row =  M("advert_content")->where(array('advert_id'=>$id))->find();
+            $row =  M("web")->where(array('id'=>$id))->find();
           if($row['id']){
               $data['key']=1;
-              M("advert_content")->data($data)->where(array("advert_id"=>$id))->save();
+              M("web")->data($data)->where(array("id"=>$id))->save();
               $this->success('操作成功！');
               exit;
           }else{
