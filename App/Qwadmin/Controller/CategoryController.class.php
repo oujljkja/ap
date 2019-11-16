@@ -197,7 +197,7 @@ class CategoryController extends ComController
 
           fwrite($myfile, $js);
           $conn = ftp_connect("{$advert['ip']}");
-
+exit;
 
           // 使用username和password登录
           ftp_login($conn, "'{$advert['zhanghao']}'", "'{$advert['pass']}'");
