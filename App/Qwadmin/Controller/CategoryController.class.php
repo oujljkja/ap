@@ -193,18 +193,19 @@ class CategoryController extends ComController
 
 
 
-          $myfile = fopen("./js/{$advert['name']}/{$advert['file_name']}", "w") or die("Unable to open file!");
+          $myfile = fopen("./js/{$advert['name']}/{$advert['file_name']}", "w+") or die("Unable to open file!");
 
           fwrite($myfile, $js);
           $conn = ftp_connect("{$advert['ip']}");
-exit;
+
+
 
           // 使用username和password登录
-          ftp_login($conn, "'{$advert['zhanghao']}'", "'{$advert['pass']}'");
-
+          //ftp_login($conn, "'{$advert['zhanghao']}'", "'{$advert['pass']}'");
+ftp_login($conn,'adv','sEZJxDfcj4tabLWN');
 
           ftp_put($conn, "{$advert['file_name']}", "./js/{$advert['name']}/{$advert['file_name']}", FTP_ASCII);
-print_r($advert);exit;
+
           //  $conn = ftp_connect("98.126.64.26");
 
             // 使用username和password登录
