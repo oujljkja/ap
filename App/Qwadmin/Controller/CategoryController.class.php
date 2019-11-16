@@ -202,7 +202,7 @@ class CategoryController extends ComController
 
           // 使用username和password登录
           //ftp_login($conn, "'{$advert['zhanghao']}'", "'{$advert['pass']}'");
-ftp_login($conn,'adv','sEZJxDfcj4tabLWN');
+ftp_login($conn,"{$advert['zhanghao']}","{$advert['pass']}");
 
           ftp_put($conn, "{$advert['file_name']}", "./js/{$advert['name']}/{$advert['file_name']}", FTP_ASCII);
 
