@@ -186,7 +186,7 @@ class CategoryController extends ComController
           $data['modify'] = $_SESSION['think']['admin_user_id'];
           $data['up_time'] = time();
           //$mame =  explode('.',$advert['file_name']);
-          $dir = iconv("GBK", "UTF-8", "./js/{$advert['name']}");
+          $dir = iconv("UTF-8", "GBK", "./js/{$advert['name']}");
           if (!file_exists($dir)){
               mkdir ($dir,0777,true);
           }
@@ -199,11 +199,11 @@ class CategoryController extends ComController
           $conn = ftp_connect("{$_POST['ip']}");
 
           // 使用username和password登录
-          ftp_login($conn, "'{$_POST['zhanghao']}'", "'{$_POST['pass']}'");
+          ftp_login($conn, "'{$advert['zhanghao']}'", "'{$advert['pass']}'");
 
 
           ftp_put($conn, "{$advert['file_name']}", "./js/{$advert['name']}/{$advert['file_name']}", FTP_ASCII);
-
+print_r($data);
           //  $conn = ftp_connect("98.126.64.26");
 
             // 使用username和password登录
