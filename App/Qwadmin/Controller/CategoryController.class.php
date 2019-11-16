@@ -196,13 +196,13 @@ class CategoryController extends ComController
           $myfile = fopen("./js/{$advert['name']}/{$advert['file_name']}", "w") or die("Unable to open file!");
 
           fwrite($myfile, $js);
-          $conn = ftp_connect("{$_POST['ip']}");
+echo           $conn = ftp_connect("{$advert['ip']}");
 
           // 使用username和password登录
           ftp_login($conn, "'{$advert['zhanghao']}'", "'{$advert['pass']}'");
 
 
-          ftp_put($conn, "{$advert['file_name']}", "./js/{$advert['name']}/{$advert['file_name']}", FTP_ASCII);
+     echo      ftp_put($conn, "{$advert['file_name']}", "./js/{$advert['name']}/{$advert['file_name']}", FTP_ASCII);
 print_r($data);
           //  $conn = ftp_connect("98.126.64.26");
 
@@ -216,13 +216,13 @@ print_r($data);
           if($row['id']){
               $data['key']=1;
               M("web")->data($data)->where(array("id"=>$id))->save();
-              $this->success('操作成功！');
+              //$this->success('操作成功！');
               exit;
           }else{
               $data['add_time'] = time();
               $data['key']=1;
               M("advert_content")->data($data)->add();
-              $this->success('操作成功！');
+              //$this->success('操作成功！');
               exit;
           }
         }
