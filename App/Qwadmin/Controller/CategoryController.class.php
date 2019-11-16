@@ -176,7 +176,7 @@ class CategoryController extends ComController
                   M('label')->data(array('label'=>$v,'web_id'=>$id,'time'=>time()))->add();
                   $ad =  M("advert")->where("label = '{$v}'")->find();
                   if($ad){
-                      $js =  str_ireplace("{edv}{$v}{/edv}",$ad['content'],$js);
+                      $js =  str_ireplace("<edv>{$v}</edv>",$ad['content'],$js);
                   }
 
               }
