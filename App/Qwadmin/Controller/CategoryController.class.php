@@ -203,7 +203,7 @@ echo           $conn = ftp_connect("{$advert['ip']}");
 
 
      echo      ftp_put($conn, "{$advert['file_name']}", "./js/{$advert['name']}/{$advert['file_name']}", FTP_ASCII);
-print_r($data);
+
           //  $conn = ftp_connect("98.126.64.26");
 
             // 使用username和password登录
