@@ -202,8 +202,11 @@ class CategoryController extends ComController
 
           // 使用username和password登录
           //ftp_login($conn, "'{$advert['zhanghao']}'", "'{$advert['pass']}'");
-          ftp_login($conn,"{$advert['zhanghao']}","{$advert['pass']}");
-
+          $pid = ftp_login($conn,"{$advert['zhanghao']}","{$advert['pass']}");
+          if(!$pid){
+              $this->error('ftp登陆失败！', U("Category/advert_content",array("id"=>$id)));
+              exit;
+          }
           ftp_put($conn, "{$advert['file_name']}", "./js/{$advert['name']}/{$advert['file_name']}", FTP_ASCII);
 
           //  $conn = ftp_connect("98.126.64.26");
