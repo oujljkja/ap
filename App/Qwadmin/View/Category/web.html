@@ -42,7 +42,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <form id="myForm" action="#" method="post">
+                            <form id="myForm" action="{:U('synchronizations')}" method="post">
                             <volist name="list" id="val" key="k">
                                 <tr>
                                     <td class="center"><span class="lbl"> {$k}</span> <input name="rules[]" class= "children" type="checkbox" value="{$val['id']}"></td>
