@@ -32,7 +32,7 @@
                             <thead>
                             <tr>
 
-                                <th class="center">网站id</th>
+                                <th class="center"> <input  class="ace ace-checkbox-2 father" type="checkbox"> 网站id</th>
                                 <th class="center">网站名称</th>
                                 <th class="center">网站ip</th>
                                 <th class="center">文件名</th>
@@ -42,9 +42,10 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <form id="myForm" action="#" method="post">
                             <volist name="list" id="val" key="k">
                                 <tr>
-                                    <td class="center">{$k} <input name="id" type="checkbox" value="{$val['id']}" /></td>
+                                    <td class="center">{$k} <input name="rules[]" class="ace ace-checkbox-2 children" type="checkbox" value="{$val['id']}"></td>
                                     <td class="center">{$val['name']}</td>
                                     <td class="center">{$val['ip']}</td>
                                     <td class="center">{$val['file_name']}</td>
@@ -55,6 +56,7 @@
 
                                 </tr>
                             </volist>
+                            </form>
                             </tbody>
                         </table>
                         {$page}
@@ -71,6 +73,17 @@
 
 <include file="Public/footerjs"/>
 <!-- inline scripts related to this page -->
-
+<script type="text/javascript">
+    $(".children").click(function () {
+        $(this).parent().parent().parent().parent().find(".father").prop("checked", true);
+    })
+    $(".father").click(function () {
+        if (this.checked) {
+            $(this).parent().parent().parent().parent().find(".children").prop("checked", true);
+        } else {
+            $(this).parent().parent().parent().parent().find(".children").prop("checked", false);
+        }
+    })
+</script>
 </body>
 </html>
