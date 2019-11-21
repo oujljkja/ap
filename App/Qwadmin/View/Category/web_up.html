@@ -49,7 +49,18 @@
                                     <input type="text" name="ip" id="ip" placeholder="" class="col-xs-10 col-sm-5" value="{$row['ip']}"  >
                                 </div>
                             </div>
+                            <div class="space-4"></div>
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 编码 </label>
+                                <div class="col-sm-9">
+                                    <select id="pid" name="webcode" class="rcol-xs-10 col-sm-5"  disabled>
 
+                                        <option value="{$row['webcode']}"    <if condition="$val['webcode'] eq 'UTF-8'"> selected="selected" </if>>UTF-8</option>
+                                        <option value="{$row['webcode']}"    <if condition="$val['webcode'] eq 'GBK'"> selected="selected" </if>>GBK</option>
+
+                                    </select>
+
+                                </div>
                             <div class="space-4"></div>
                             <div class="form-group">
                                 <label class="col-sm-1 control-label no-padding-right" for="form-field-2">
