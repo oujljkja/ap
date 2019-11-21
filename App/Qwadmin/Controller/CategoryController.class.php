@@ -63,6 +63,7 @@ class CategoryController extends ComController
     public  function  web(){
 
         $vars = M('web')->select();
+
         $this->assign('list', $vars);
         $this->display();
     }
