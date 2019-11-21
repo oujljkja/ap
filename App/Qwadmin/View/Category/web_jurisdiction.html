@@ -32,7 +32,7 @@
                                 <div class="col-sm-9">
                                     <select id="pid" name="pid" class="rcol-xs-10 col-sm-5"  disabled>
                                         <volist name="member" id="val">
-                                        <option value="{$val['uid']}" selected="selected"   <if condition="$val['st_id'] eq 1"> selected </if>>{$val['user']}</option>
+                                        <option value="{$val['uid']}"    <if condition="$val['st_id'] eq 1"> selected="selected" </if>>{$val['user']}</option>
                                         </volist>
                                      </select>
                                     <span class="help-inline col-xs-12 col-sm-7">

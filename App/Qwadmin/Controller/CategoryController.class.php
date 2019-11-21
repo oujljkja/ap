@@ -191,7 +191,7 @@ class CategoryController extends ComController
           if (!file_exists($dir)){
               mkdir ($dir,0777,true);
           }
-
+          $data['webcode'] = $_POST['webcode'];
 
           if($advert['webcode'] == "GBK" ){
               $js =  mb_convert_encoding($js, "UTF-8", "GBK");
@@ -232,12 +232,6 @@ class CategoryController extends ComController
           if($row['id']){
               $data['key']=1;
               M("web")->data($data)->where(array("id"=>$id))->save();
-              $this->success('操作成功！');
-              exit;
-          }else{
-              $data['add_time'] = time();
-              $data['key']=1;
-              M("advert_content")->data($data)->add();
               $this->success('操作成功！');
               exit;
           }
