@@ -187,14 +187,20 @@ class CategoryController extends ComController
           $data['modify'] = $_SESSION['think']['admin_user_id'];
           $data['up_time'] = time();
           //$mame =  explode('.',$advert['file_name']);
-          $dir = iconv("UTF-8", "GBK", "./js/{$advert['name']}");
-          if (!file_exists($dir)){
-              mkdir ($dir,0777,true);
-          }
+
 
 
           if($advert['webcode'] == "GBK" ){
+              $dir = iconv("GBK", "UTF-8", "./js/{$advert['name']}");
+              if (!file_exists($dir)){
+                  mkdir ($dir,0777,true);
+              }
               $js =  mb_convert_encoding($js, "GBK", "UTF-8");
+          }else{
+              $dir = iconv("UTF-8", "GBK", "./js/{$advert['name']}");
+              if (!file_exists($dir)){
+                  mkdir ($dir,0777,true);
+              }
           }
           $myfile = fopen("./js/{$advert['name']}/{$advert['file_name']}", "w+");
 
