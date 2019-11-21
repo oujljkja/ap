@@ -130,7 +130,7 @@ class CategoryController extends ComController
                 $data['zhanghao'] = trim($_POST['zhanghao']);
                 $data['pass'] = trim($_POST['pass']);
             }
-
+            $data['webcode'] = $_POST['webcode'];
            // $data['key'] = 2;
            // $data['code'] = $_POST['code'];
             M("web")->data($data)->where(array("id"=>$id))->save();
@@ -191,7 +191,7 @@ class CategoryController extends ComController
           if (!file_exists($dir)){
               mkdir ($dir,0777,true);
           }
-          $data['webcode'] = $_POST['webcode'];
+
 
           if($advert['webcode'] == "GBK" ){
               $js =  mb_convert_encoding($js, "UTF-8", "GBK");
