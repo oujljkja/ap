@@ -248,7 +248,68 @@ class CategoryController extends ComController
         $this->display();
 
     }
+    //同步
+    public function synchronization(){
+        $id =  $_GET['id'];
+        //$row =  M("advert_content")->where(array('advert_id'=>$id))->find();
+        $advert =  M("web")->where(array('id'=>$id))->find();
+        //if($advert['key']!=$row['key']){
+        $js =  $row['code'] = $advert['code'];
+        $i = explode("<edv>",$js);
 
+        $z = array();
+        foreach ($i as $key=>$v){
+            if($key>0){
+                $z=  explode("</edv>",$v);
+                $ro[] = $z[0];
+            }
+        }
+
+        M('label')->where(array("web_id"=>$id))->delete();
+        foreach ($ro as $v){
+            M('label')->data(array('label'=>$v,'web_id'=>$id,'time'=>time()))->add();
+            $ad =  M("advert")->where("label = '{$v}'")->find();
+            if($ad){
+                $js =  str_ireplace("<edv>{$v}</edv>",$ad['content'],$js);
+            }
+
+        }
+
+        $data['code'] = $js;
+        $data['modify'] = $_SESSION['think']['admin_user_id'];
+        $data['up_time'] = time();
+        //$mame =  explode('.',$advert['file_name']);
+        $dir = iconv("UTF-8", "GBK", "./js/{$advert['name']}");
+        if (!file_exists($dir)){
+            mkdir ($dir,0777,true);
+        }
+
+
+
+        $myfile = fopen("./js/{$advert['name']}/{$advert['file_name']}", "w+") or die("Unable to open file!");
+
+        fwrite($myfile, $js);
+        $conn = ftp_connect("{$advert['ip']}");
+
+
+
+        // 使用username和password登录
+        //ftp_login($conn, "'{$advert['zhanghao']}'", "'{$advert['pass']}'");
+        $pid = ftp_login($conn,"{$advert['zhanghao']}","{$advert['pass']}");
+        if(!$pid){
+            $this->error('ftp登陆失败！', U("Category/advert_content",array("id"=>$id)));
+            exit;
+        }
+        if(!ftp_put($conn, "{$advert['file_name']}", "./js/{$advert['name']}/{$advert['file_name']}", FTP_ASCII)){
+            $this->error('ftp上传失败！', U("Category/advert_content",array("id"=>$id)));
+            exit;
+        }
+        $data['state'] = 1;
+        M("web")->data($data)->where(array("id"=>$id))->save();
+        $this->success('操作成功！');
+        exit;
+
+    }
     public function read_file_content($FileName)
     {
 

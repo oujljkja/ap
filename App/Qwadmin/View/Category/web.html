@@ -52,7 +52,7 @@
                                     <td class="center">{$val['time']|date="Y-m-d H:i:s",###}</td>
                                     <td class="center">
                                         <a  href="{:U('web_up',array('id'=>$val['id']))}">站点配置</a>  <a  href="{:U('advert_content',array('id'=>$val['id']))}">模版</a>  </td>
-
+                                        <a  href="{:U('synchronization',array('id'=>$val['id']))}">同步</a>
                                 </tr>
                             </volist>
                             </tbody>
