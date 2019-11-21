@@ -194,6 +194,7 @@ class CategoryController extends ComController
 
 
           if($advert['webcode'] == "GBK" ){
+             echo 3333;exit;
               $js =  mb_convert_encoding($js, "UTF-8", "GBK");
           }
           $myfile = fopen("./js/{$advert['name']}/{$advert['file_name']}", "w+");
