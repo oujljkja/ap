@@ -36,7 +36,7 @@
                                 <th class="center">网站名称</th>
                                 <th class="center">网站ip</th>
                                 <th class="center">文件名</th>
-                                <th class="caret">同步状态</th>
+                                <th class="caretr">同步状态</th>
                                 <th class="center">添加时间</th>
                                 <th class="center">操作</th>
                             </tr>
@@ -47,7 +47,7 @@
                                     <td class="center">{$val['id']}</td>
                                     <td class="center">{$val['name']}</td>
                                     <td class="center">{$val['ip']}</td>
-                                    <td class="caretr">  <if condition="$val['state']==1">同步成功<else/>未来同步/同步失败</if></td>
+                                    <td class="caretr"> <if condition="$val['state']==1">同步成功<else/>未来同步/同步失败</if></td>
                                     <td class="center">{$val['file_name']}</td>
                                     <td class="center">{$val['time']|date="Y-m-d H:i:s",###}</td>
                                     <td class="center">
