@@ -42,9 +42,9 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <volist name="list" id="val">
+                            <volist name="list" id="val" key="k">
                                 <tr>
-                                    <td class="center">{$val['id']}</td>
+                                    <td class="center">{$k} <input name="id" type="checkbox" value="{$val['id']}" /></td>
                                     <td class="center">{$val['name']}</td>
                                     <td class="center">{$val['ip']}</td>
                                     <td class="center">{$val['file_name']}</td>
