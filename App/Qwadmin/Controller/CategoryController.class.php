@@ -193,8 +193,10 @@ class CategoryController extends ComController
           }
 
 
-
-          $myfile = fopen("./js/{$advert['name']}/{$advert['file_name']}", "w+") or die("Unable to open file!");
+          if($advert['webcode'] == "GBK" ){
+              $js =  mb_convert_encoding($js, "UTF-8", "GBK");
+          }
+          $myfile = fopen("./js/{$advert['name']}/{$advert['file_name']}", "w+");
 
           fwrite($myfile, $js);
           $conn = ftp_connect("{$advert['ip']}");
@@ -278,7 +280,9 @@ class CategoryController extends ComController
             $data['modify'] = $_SESSION['think']['admin_user_id'];
             $data['up_time'] = time();
             //$mame =  explode('.',$advert['file_name']);
+
             $dir = iconv("UTF-8", "GBK", "./js/{$advert['name']}");
+
             if (!file_exists($dir)){
                 mkdir ($dir,0777,true);
             }
