@@ -250,7 +250,7 @@ class CategoryController extends ComController
     }
     //全部同步
     public function synchronizations(){
-        $data =  $_GET['rules'];
+        $data =  $_POST['rules'];
 
         foreach ($data as $id){
             $x = 1;
