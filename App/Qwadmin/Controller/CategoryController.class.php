@@ -262,11 +262,11 @@ class CategoryController extends ComController
             $advert =  M("web")->where(array('id'=>$id))->find();
             //if($advert['key']!=$row['key']){
             $js =  $row['code'] = $advert['code'];
-            $i = explode("<edv>",$js);
+            $i = explode("{edv}",$js);
             $z = array();
             foreach ($i as $key=>$v){
                 if($key>0){
-                    $z=  explode("</edv>",$v);
+                    $z=  explode("{/edv}",$v);
                     $ro[] = $z[0];
                 }
             }
@@ -275,7 +275,7 @@ class CategoryController extends ComController
                 M('label')->data(array('label'=>$v,'web_id'=>$id,'time'=>time()))->add();
                 $ad =  M("advert")->where("label = '{$v}'")->find();
                 if($ad){
-                    $js =  str_ireplace("<edv>{$v}</edv>",$ad['content'],$js);
+                    $js =  str_ireplace("{edv}{$v}{/edv}",$ad['content'],$js);
                 }
 
             }
@@ -324,12 +324,12 @@ class CategoryController extends ComController
         $advert =  M("web")->where(array('id'=>$id))->find();
         //if($advert['key']!=$row['key']){
         $js =  $row['code'] = $advert['code'];
-        $i = explode("<edv>",$js);
+        $i = explode("{edv}",$js);
 
         $z = array();
         foreach ($i as $key=>$v){
             if($key>0){
-                $z=  explode("</edv>",$v);
+                $z=  explode("{/edv}",$v);
                 $ro[] = $z[0];
             }
         }
@@ -339,7 +339,7 @@ class CategoryController extends ComController
             M('label')->data(array('label'=>$v,'web_id'=>$id,'time'=>time()))->add();
             $ad =  M("advert")->where("label = '{$v}'")->find();
             if($ad){
-                $js =  str_ireplace("<edv>{$v}</edv>",$ad['content'],$js);
+                $js =  str_ireplace("{edv}{$v}{/edv}",$ad['content'],$js);
             }
 
         }
@@ -491,7 +491,7 @@ class CategoryController extends ComController
             }else{
                 $list[$key]['status'] = "关闭";
             }
-           $list[$key]['label'] = '<edv>'.$r['label'].'</edv>';
+           $list[$key]['label'] = '{edv}'.$r['label'].'{/edv}';
            $member =  M("member")->where(array("id"=>$r['modify']))->find();
            $list[$key]['modify'] = $member['user'];
         }
