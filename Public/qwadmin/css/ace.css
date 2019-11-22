@@ -12473,7 +12473,7 @@ td .lbl:only-child {
   margin: 0 auto;
 }
 .login-layout {
-  background: url('images/banner.jpg') top center no-repeat ;
+  /*background: url('images/banner.jpg') top center no-repeat ;*/
   background-size:cover;
 
 
