@@ -160,9 +160,11 @@ class CategoryController extends ComController
           $advert =  M("web")->where(array('id'=>$id))->find();
           $data['advert_in'] = trim($_POST['advert_in']);
           //$js =  $this->read_file_content("./js/{$advert['file_name']}");
-          if( $_POST['code']){
-              $js =  $_POST['code'];
 
+          if( $_POST['code']){
+
+              $js =  $_POST['code'];
+              /*
               $i = explode("<edv>",$js);
               $z = array();
               foreach ($i as $key=>$v){
@@ -180,7 +182,7 @@ class CategoryController extends ComController
                       $js =  str_ireplace("<edv>{$v}</edv>",$ad['content'],$js);
                   }
 
-              }
+              }*/
           }
 
           $data['code'] = $js;
@@ -189,7 +191,7 @@ class CategoryController extends ComController
           //$mame =  explode('.',$advert['file_name']);
 
 
-
+/*
           if($advert['webcode'] == "GBK" ){
               $dir = iconv("GBK", "UTF-8", "./js/{$advert['name']}");
               if (!file_exists($dir)){
@@ -234,6 +236,7 @@ class CategoryController extends ComController
 
            // ftp_put($conn, “xyz.txt”, “abc.txt”, FTP_ASCII);
           //M("web")->data(array('key'=>1))->where(array("id"=>$id))->save();
+   */
             $row =  M("web")->where(array('id'=>$id))->find();
           if($row['id']){
               $data['key']=1;
