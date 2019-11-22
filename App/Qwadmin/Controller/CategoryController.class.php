@@ -65,6 +65,7 @@ class CategoryController extends ComController
         $vars = M('web')->select();
 
         $this->assign('list', $vars);
+        $this->assign("uid",$_SESSION['user']['uid']);
         $this->display();
     }
     //添加网站
