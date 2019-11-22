@@ -279,6 +279,7 @@ class CategoryController extends ComController
                 }
 
             }
+            echo $js;exit;
             $data['code'] = $js;
             $data['modify'] = $_SESSION['think']['admin_user_id'];
             $data['up_time'] = time();
