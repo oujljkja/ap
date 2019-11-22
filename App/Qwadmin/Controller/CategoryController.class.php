@@ -487,7 +487,7 @@ class CategoryController extends ComController
             }else{
                 $list[$key]['status'] = "关闭";
             }
-           $list[$key]['label'] = '{edv}'.$r['label'].'{/edv}';
+           $list[$key]['label'] = '<edv>'.$r['label'].'</edv>';
            $member =  M("member")->where(array("id"=>$r['modify']))->find();
            $list[$key]['modify'] = $member['user'];
         }
