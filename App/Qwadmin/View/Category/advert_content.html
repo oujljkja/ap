@@ -35,6 +35,16 @@
                                     <input type="text" name="o" id="o" placeholder="" class="col-xs-10 col-sm-5" value="{$advert['name']}" readonly  unselectable="on" >
 
                                 </div>
+
+                                <div class="col-md-offset-2 col-md-9">
+                                    <a  href="{:U('synchronization',array('id'=>$row['id']))}"> <button class="btn btn-info" type="reset">
+                                        <i class="icon-ok bigger-110"></i>
+                                        同步
+                                    </button></a>
+                                </div>
+
+
+
                             </div>
 
                             <div class="space-4"></div>
