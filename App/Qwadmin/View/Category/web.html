@@ -54,7 +54,7 @@
                                     <td class="center">{$val['file_name']}</td>
                                     <td class="caretr"> <if condition="$val['state']==1">同步成功<else/>未来同步/同步失败</if></td>
                                     <td class="caretr">{$val['webcode']}</td>
-                                    <td class="center">{$val['up_time']|date="Y-m-d H:i:s",###}</td>
+                                    <td class="center">{$val['time']|date="Y-m-d H:i:s",###}</td>
                                     <td class="center">
                                         <a  href="{:U('web_up',array('id'=>$val['id']))}">站点配置</a>  <a  href="{:U('advert_content',array('id'=>$val['id']))}">模版</a>  <a  href="{:U('synchronization',array('id'=>$val['id']))}">同步</a></td>
 

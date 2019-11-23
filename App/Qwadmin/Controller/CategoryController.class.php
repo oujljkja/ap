@@ -189,7 +189,7 @@ class CategoryController extends ComController
 
           $data['code'] = $js;
           $data['modify'] = $_SESSION['think']['admin_user_id'];
-          $data['up_time'] = time();
+          $data['time'] = time();
           //$mame =  explode('.',$advert['file_name']);
 
 
