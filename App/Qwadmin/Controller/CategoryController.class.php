@@ -239,6 +239,7 @@ class CategoryController extends ComController
           //M("web")->data(array('key'=>1))->where(array("id"=>$id))->save();
    */
             $row =  M("web")->where(array('id'=>$id))->find();
+
           if($row['id']){
               $data['key']=1;
               M("web")->data($data)->where(array("id"=>$id))->save();
