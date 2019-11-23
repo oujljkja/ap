@@ -132,6 +132,7 @@ class CategoryController extends ComController
                 $data['pass'] = trim($_POST['pass']);
             }
             $data['webcode'] = $_POST['webcode'];
+
            // $data['key'] = 2;
            // $data['code'] = $_POST['code'];
             M("web")->data($data)->where(array("id"=>$id))->save();
